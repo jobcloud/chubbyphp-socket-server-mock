@@ -11,7 +11,7 @@ trait CreateSocketServerMockTrait
     private function createSocketServerMock(string $host, int $port, array $messageLogs): Process
     {
         $process = new Process([
-            realpath(__DIR__.'/../bin/socketServerMock'),
+            realpath(__DIR__ . '/../bin/socketServerMock'),
             $host,
             $port,
             json_encode($messageLogs),

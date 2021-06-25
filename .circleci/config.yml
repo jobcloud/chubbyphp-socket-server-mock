@@ -1,0 +1,28 @@
+version: 2.1
+
+orbs:
+  ci-caching: jobcloud/ci-caching@0.12
+  ci-php: jobcloud/ci-php@0.32
+
+workflows:
+  version: 2
+  test-chubbyphp-socket-server-mock:
+    jobs:
+      - ci-caching/build-docker-images
+      - ci-php/install-dependencies:
+          dependencyCheckSumFile: "./composer.json"
+          sshFingerprint: "79:f7:d3:dc:b3:97:e4:30:a5:0e:62:b3:f3:64:89:39"
+          requires:
+            - ci-caching/build-docker-images
+      - ci-php/test:
+          dependencyCheckSumFile: "./composer.json"
+          requires:
+            - ci-php/install-dependencies
+      - ci-php/code-style:
+          dependencyCheckSumFile: "./composer.json"
+          requires:
+            - ci-php/install-dependencies
+      - ci-php/static-analysis:
+          dependencyCheckSumFile: "./composer.json"
+          requires:
+            - ci-php/install-dependencies

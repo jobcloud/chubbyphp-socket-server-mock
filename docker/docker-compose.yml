@@ -1,0 +1,20 @@
+version: '3.2'
+
+services:
+  php:
+    container_name: chubbyphp-socket-server-mock-php
+    hostname: chubbyphp-socket-server-mock-php
+    build:
+      context: dev/php
+      args:
+        GROUP_ID: ${GROUP_ID}
+        USER_ID: ${USER_ID}
+    volumes:
+      - ../:/app/
+    tty: true
+    secrets:
+      - ssh_host_key
+
+secrets:
+  ssh_host_key:
+    file: ~/.ssh/id_rsa

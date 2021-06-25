@@ -2,6 +2,8 @@
 .idea/
 .phpunit.result.cache
 .vscode/
-build/
+build
 composer.lock
-vendor/
+vendor
+
+docker/.env
