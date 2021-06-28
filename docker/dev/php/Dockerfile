@@ -1,26 +1,19 @@
-FROM php:8.0-cli-alpine3.13
+FROM php:7.3-cli-alpine3.13
 
-# https://getcomposer.org/doc/03-cli.md#composer-allow-superuser
-ENV COMPOSER_ALLOW_SUPERUSER 1
 ARG GROUP_ID
 ARG USER_ID
 
 COPY files/bin /usr/local/bin/
-COPY --chown=www-data:www-data files/.ssh/config /home/www-data/.ssh/config
-
-# SYS: Fix ssh permissions
-RUN chmod 700 /home/www-data/.ssh && \
-    chmod 400 /home/www-data/.ssh/config
+COPY files/php /phpIni
 
 # SYS: Install required packages
 RUN apk --no-cache upgrade && \
-    apk --no-cache add bash git sudo shadow autoconf gcc g++ make openssh
+    apk --no-cache add bash git sudo shadow autoconf gcc g++ make
 
 # PHP: Install php extensions
-RUN mkdir /phpIni && \
-    pecl channel-update pecl.php.net && \
-    pecl install pcov apcu && \
-    php-ext-enable pcov apcu
+RUN pecl channel-update pecl.php.net && \
+    pecl install pcov && \
+    php-ext-enable pcov
 
 RUN if [ -n "$GROUP_ID" ] && [ "$GROUP_ID" -lt 60001 ]; then \
         groupmod -g ${GROUP_ID} -o www-data; \
@@ -30,6 +23,8 @@ RUN if [ -n "$USER_ID" ] && [ "$USER_ID" -lt 60001 ]; then \
         usermod -u ${USER_ID} -o www-data; \
     fi
 
+RUN usermod -s /bin/bash www-data && \
+    echo 'www-data ALL=(ALL) NOPASSWD: ALL' > '/etc/sudoers.d/www-data'
 
 # USER: copy home
 COPY --chown=www-data:www-data files/user-home /home/www-data
