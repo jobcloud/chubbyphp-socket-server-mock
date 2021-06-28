@@ -1,4 +1,4 @@
-FROM php:7.3-cli-alpine3.13
+FROM php:8.0-cli-alpine3.13
 
 ARG GROUP_ID
 ARG USER_ID

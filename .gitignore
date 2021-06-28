@@ -3,7 +3,6 @@
 .phpunit.result.cache
 .vscode/
 build
-composer.lock
 vendor
 
 docker/.env
