@@ -4,6 +4,12 @@
     <include>
       <directory>./src</directory>
     </include>
+    <report>
+      <clover outputFile="build/logs/phpunit/clover.xml"/>
+      <html outputDirectory="build/logs/phpunit/coverage"/>
+      <text outputFile="php://stdout" showOnlySummary="true"/>
+      <xml outputDirectory="build/logs/phpunit/coverage-xml"/>
+    </report>
   </coverage>
   <testsuites>
     <testsuite name="Unit">
