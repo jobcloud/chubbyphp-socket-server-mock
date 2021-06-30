@@ -24,7 +24,7 @@ final class Server implements ServerInterface
 
         $this->stream = $stream;
 
-        fwrite(STDOUT, 'socket server mock: started'.PHP_EOL);
+        fwrite(STDOUT, 'socket server mock: started' . PHP_EOL);
     }
 
     public function __deconstruct(): void

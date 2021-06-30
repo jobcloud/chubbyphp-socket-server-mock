@@ -30,7 +30,7 @@ final class ServerTest extends TestCase
         $is_resource->expects($this->once())->with($serverResource)->willReturn(true);
 
         $fwrite = $this->getFunctionMock('Chubbyphp\SocketServerMock\Stream', 'fwrite');
-        $fwrite->expects($this->once())->with(STDOUT, 'socket server mock: started'.PHP_EOL);
+        $fwrite->expects($this->once())->with(STDOUT, 'socket server mock: started' . PHP_EOL);
 
         new Server('0.0.0.0', 3000);
     }
@@ -63,11 +63,13 @@ final class ServerTest extends TestCase
         $stream_socket_accept->expects($this->once())->with($serverResource)->willReturn($connectionResource);
 
         $is_resource = $this->getFunctionMock('Chubbyphp\SocketServerMock\Stream', 'is_resource');
-        $is_resource->expects($this->at(0))->with($serverResource)->willReturn(true);
-        $is_resource->expects($this->at(1))->with($connectionResource)->willReturn(true);
+        $is_resource
+            ->expects(self::exactly(2))
+            ->withConsecutive([$serverResource], [$connectionResource])
+            ->willReturn(true);
 
         $fwrite = $this->getFunctionMock('Chubbyphp\SocketServerMock\Stream', 'fwrite');
-        $fwrite->expects($this->once())->with(STDOUT, 'socket server mock: started'.PHP_EOL);
+        $fwrite->expects($this->once())->with(STDOUT, 'socket server mock: started' . PHP_EOL);
 
         $server = new Server('0.0.0.0', 3000);
 
@@ -85,7 +87,7 @@ final class ServerTest extends TestCase
         $is_resource->expects($this->once())->with($serverResource)->willReturn(true);
 
         $fwrite = $this->getFunctionMock('Chubbyphp\SocketServerMock\Stream', 'fwrite');
-        $fwrite->expects($this->once())->with(STDOUT, 'socket server mock: started'.PHP_EOL);
+        $fwrite->expects($this->once())->with(STDOUT, 'socket server mock: started' . PHP_EOL);
 
         $fclose = $this->getFunctionMock('Chubbyphp\SocketServerMock\Stream', 'fclose');
         $fclose->expects($this->once())->with($serverResource);
@@ -105,7 +107,7 @@ final class ServerTest extends TestCase
         $is_resource->expects($this->once())->with($serverResource)->willReturn(true);
 
         $fwrite = $this->getFunctionMock('Chubbyphp\SocketServerMock\Stream', 'fwrite');
-        $fwrite->expects($this->once())->with(STDOUT, 'socket server mock: started'.PHP_EOL);
+        $fwrite->expects($this->once())->with(STDOUT, 'socket server mock: started' . PHP_EOL);
 
         $server = new Server('0.0.0.0', 3000);
 

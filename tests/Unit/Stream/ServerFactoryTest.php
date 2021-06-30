@@ -29,7 +29,7 @@ final class ServerFactoryTest extends TestCase
         $is_resource->expects($this->once())->with($serverResource)->willReturn(true);
 
         $fwrite = $this->getFunctionMock('Chubbyphp\SocketServerMock\Stream', 'fwrite');
-        $fwrite->expects($this->once())->with(STDOUT, 'socket server mock: started'.PHP_EOL);
+        $fwrite->expects($this->once())->with(STDOUT, 'socket server mock: started' . PHP_EOL);
 
         $factory = new ServerFactory();
 
