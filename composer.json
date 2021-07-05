@@ -1,5 +1,5 @@
 {
-    "name": "chubbyphp/chubbyphp-socket-server-mock",
+    "name": "jobcloud/chubbyphp-socket-server-mock",
     "description": "Fork of Chubbyphp Socket Server Mock",
     "keywords": ["chubbyphp", "slim", "socket", "server", "mock"],
     "license": "MIT",
