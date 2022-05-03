@@ -1,12 +1,13 @@
 {
+    "timeout": 10,
     "source": {
         "directories": [
             "src"
         ]
     },
-    "timeout": 10,
     "logs": {
-        "text": "build/phpinfection.log"
+        "text": "build\/logs\/infection\/infection.log",
+        "summary": "build\/logs\/infection\/infection-summary.log"
     },
     "mutators": {
         "@default": true

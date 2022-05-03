@@ -6,9 +6,7 @@ namespace Chubbyphp\SocketServerMock\Stream;
 
 final class Server implements ServerInterface
 {
-    /**
-     * @var resource
-     */
+    /** @var resource */
     private $stream;
 
     public function __construct(string $host, int $port)

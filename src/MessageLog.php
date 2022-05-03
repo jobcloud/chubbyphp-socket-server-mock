@@ -6,9 +6,7 @@ namespace Chubbyphp\SocketServerMock;
 
 final class MessageLog implements MessageLogInterface
 {
-    /**
-     * @var MessageInterface[]
-     */
+    /** @var MessageInterface[] */
     private $messages;
 
     /**

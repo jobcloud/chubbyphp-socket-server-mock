@@ -6,14 +6,10 @@ namespace Chubbyphp\SocketServerMock;
 
 final class Message implements MessageInterface
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $input;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $output;
 
     public function __construct(string $input, string $output)

@@ -1,6 +1,5 @@
-FROM php:8.0-cli-alpine3.13
+FROM php:8.1-cli-alpine3.15
 
-ARG GROUP_ID
 ARG USER_ID
 
 COPY files/bin /usr/local/bin/
@@ -14,10 +13,6 @@ RUN apk --no-cache upgrade && \
 RUN pecl channel-update pecl.php.net && \
     pecl install pcov && \
     php-ext-enable pcov
-
-RUN if [ -n "$GROUP_ID" ] && [ "$GROUP_ID" -lt 60001 ]; then \
-        groupmod -g ${GROUP_ID} -o www-data; \
-    fi
 
 RUN if [ -n "$USER_ID" ] && [ "$USER_ID" -lt 60001 ]; then \
         usermod -u ${USER_ID} -o www-data; \
