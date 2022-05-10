@@ -10,9 +10,7 @@ use Chubbyphp\SocketServerMock\Stream\ServerInterface;
 
 final class SocketServerMock
 {
-    /**
-     * @var ServerFactoryInterface
-     */
+    /** @var ServerFactoryInterface */
     private $serverFactory;
 
     public function __construct(ServerFactoryInterface $serverFactory)
@@ -45,7 +43,7 @@ final class SocketServerMock
             while (true) {
                 $givenInput .= $socketConnection->read(1);
 
-                if (0 !== strpos($input, $givenInput)) {
+                if (!str_starts_with($input, $givenInput)) {
                     throw SocketServerMockException::createByInvalidInput($givenInput, $input);
                 }
 
@@ -60,7 +58,7 @@ final class SocketServerMock
 
     private function getDecodedValue(string $value): string
     {
-        if (0 === strpos($value, 'base64:')) {
+        if (str_starts_with($value, 'base64:')) {
             return base64_decode(substr($value, 7));
         }
 

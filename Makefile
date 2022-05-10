@@ -33,7 +33,7 @@ static-analysis:
 infection-testing:
 	make coverage
 	cp -f build/logs/phpunit/junit.xml build/logs/phpunit/phpunit.junit.xml
-	${INFECTION} --coverage=build/logs/phpunit --min-msi=100 --threads=`nproc`
+	${INFECTION} --coverage=build/logs/phpunit --min-msi=84 --threads=`nproc`
 
 test:
 	${PHPUNIT} --no-coverage

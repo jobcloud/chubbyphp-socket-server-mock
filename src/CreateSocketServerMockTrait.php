@@ -22,7 +22,7 @@ trait CreateSocketServerMockTrait
         $output = '';
         while ($process->isRunning()) {
             $output .= $process->getOutput();
-            if (false !== strpos($output, 'socket server mock: started')) {
+            if (str_contains($output, 'socket server mock: started')) {
                 break;
             }
 
