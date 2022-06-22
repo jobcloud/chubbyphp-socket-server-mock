@@ -9,10 +9,5 @@ services:
       args:
         USER_ID: ${USER_ID}
     volumes:
-      - ../:/app/
+      - ../:/var/www/html
     tty: true
-    secrets:
-      - ssh_host_key
-secrets:
-  ssh_host_key:
-    file: ~/.ssh/docker_rsa
