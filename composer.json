@@ -10,9 +10,9 @@
     "require-dev": {
         "chubbyphp/chubbyphp-mock": "^1.6.2",
         "php-mock/php-mock-phpunit": "^2.6.0",
-        "infection/infection": "^0.26.8",
+        "infection/infection": "^0.26.10",
         "phpunit/phpunit": "^9.5.20",
-        "phpstan/phpstan": "^1.6.7",
+        "phpstan/phpstan": "^1.7.10",
         "rregeer/phpunit-coverage-check": "^0.3.1",
         "squizlabs/php_codesniffer": "^3.6.2",
         "symfony/phpunit-bridge": "^5.4.8"

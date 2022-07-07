@@ -1,4 +1,4 @@
-FROM php:8.1-cli-alpine3.15
+FROM php:8.1-cli-alpine3.16
 
 ARG USER_ID
 
@@ -29,4 +29,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 
 USER www-data
 
-WORKDIR /app
+WORKDIR /var/www/html
