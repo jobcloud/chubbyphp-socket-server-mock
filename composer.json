@@ -5,7 +5,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
-        "symfony/process": "^4.4.11|^5.0"
+        "symfony/process": "^4.4.11|^5.0|^7.1"
     },
     "require-dev": {
         "chubbyphp/chubbyphp-mock": "^1.6.2",
